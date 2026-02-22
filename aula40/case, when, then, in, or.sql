@@ -1,0 +1,53 @@
+
+-- CASE, WHEN, THEN, IN, OR
+-- CASE 
+-- Case so altera na query atual, nao altera na tabela original
+-- E uma estrutura condicional, tipo um if/else, permite criar regras dentro do SELECT
+-- CASE = condicional no SQL, retorna valores diferentes dependendo da condicao
+
+
+-- CASE01  (MANEIRA MAIS UTILIZADA)
+SELECT 
+LOJA,
+CUPOM,
+DATA,
+COD_CLIENTE,
+VENDEDOR,
+
+CASE VENDEDOR  -- substituindo um valor
+WHEN 'LTZ' THEN 'LUIZ T ZANETI'
+WHEN 'LLP' THEN 'LUCAS L PIMENTEL'
+END AS [VENDEDOR]
+
+FROM TB_VENDAS;
+
+
+-- CASE02
+SELECT 
+LOJA,
+CUPOM,
+DATA,
+COD_CLIENTE,
+VENDEDOR,
+
+CASE
+WHEN VENDEDOR IN ('LTZ', 'LLP', 'UGB')
+THEN 'VENDEDORES_EXTERNOS'
+END AS [VENDEDOR]
+
+FROM TB_VENDAS;
+
+-- CASE03
+SELECT 
+LOJA,
+CUPOM,
+DATA,
+COD_CLIENTE,
+VENDEDOR,
+
+CASE
+WHEN VENDEDOR = 'LTZ' OR VENDEDOR = 'LLP'
+THEN 'VENDEDORES_EXTERNOS'
+END AS [VENDEDOR]
+
+FROM TB_VENDAS;
